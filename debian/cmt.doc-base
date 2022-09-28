@@ -1,0 +1,12 @@
+Document: cmt
+Title: Computer Music Toolkit
+Author: Richard Furse
+Abstract: This manual gives and overview of what cmt is
+ and how it came to be, it's history, it's plugins, bugs and todo items.
+ This is, in effect, a copy of the website <URL: http://www.ladspa.org/cmt/>
+Section: Sound
+
+Format: HTML
+Index: /usr/share/doc/cmt/html/index.html
+Files: /usr/share/doc/cmt/html/*.html
+

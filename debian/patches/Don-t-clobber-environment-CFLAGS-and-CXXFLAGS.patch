@@ -1,0 +1,25 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Sat, 13 Apr 2019 12:55:17 -0400
+Subject: Don't clobber environment CFLAGS and CXXFLAGS
+
+Downstream distributors like to add new flags, for example to increase hardening
+---
+ src/Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 31f729a..47c37d4 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -11,8 +11,9 @@ INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
+ # GENERAL
+ #
+ 
+-CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC
+-CXXFLAGS	=	$(CFLAGS)
++LOCAL_FLAGS	=	$(INCLUDES) -Wall -Werror -O2 -fPIC
++CFLAGS		:=	$(CFLAGS) $(LOCAL_FLAGS)
++CXXFLAGS	:=	$(CXXFLAGS) $(LOCAL_FLAGS)
+ PLUGIN_LIB	=	../plugins/cmt.so
+ 
+ ###############################################################################

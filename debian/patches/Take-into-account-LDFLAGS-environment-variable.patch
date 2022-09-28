@@ -1,0 +1,23 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Sat, 13 Apr 2019 12:26:42 -0400
+Subject: Take into account LDFLAGS environment variable
+
+It needs to be added to the linking line, so that we can add hardening
+flags without patching the Makefile.
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index c9c2afe..19253d0 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -67,7 +67,7 @@ targets:	$(PLUGIN_LIB)
+ 
+ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS) gcc_exports.map
+ 	mkdir -p $(shell dirname $(PLUGIN_LIB))
+-	$(CXX)	-shared							\
++	$(CXX)	-shared	$(LDFLAGS)					\
+ 		$(CFLAGS)						\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\

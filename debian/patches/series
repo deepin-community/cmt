@@ -1,0 +1,4 @@
+Don-t-fail-if-the-plugin-subdir-doesn-t-exist.patch
+Take-into-account-LDFLAGS-environment-variable.patch
+Don-t-remove-symbol-table-and-relocation-information-from.patch
+Don-t-clobber-environment-CFLAGS-and-CXXFLAGS.patch

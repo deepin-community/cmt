@@ -1,0 +1,23 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Sat, 13 Apr 2019 12:45:42 -0400
+Subject: Don't remove symbol table and relocation information from the
+ installed library
+
+This can be done post install by separate tools, and prevents building separate
+debug symbol packages
+---
+ src/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 19253d0..31f729a 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -71,7 +71,6 @@ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS) gcc_exports.map
+ 		$(CFLAGS)						\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\
+-		-s							\
+ 		-Wl,--version-script=gcc_exports.map			\
+ 		-o $(PLUGIN_LIB)					\
+ 		$(PLUGIN_OBJECTS)					

@@ -1,0 +1,6 @@
+# Run the "uscan" command to check for upstream updates and more.
+version=4
+
+https://www.ladspa.org/download/index.html \
+	https?://www.ladspa.org/download/cmt_([\d.]+).tgz \
+	debian uupdate

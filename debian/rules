@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+TMPDIR=$(CURDIR)/debian/cmt
+DOCDIR=$(TMPDIR)/usr/share/doc/cmt
+PLUGINDIR=$(TMPDIR)/usr/lib/ladspa
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+%:
+	dh $@ --sourcedirectory=src
+
+override_dh_auto_install:
+	dh_auto_install -- INSTALL_PLUGINS_DIR=$(PLUGINDIR)
+	mkdir -p $(DOCDIR)
+	install -m 644 -p src/freeverb/readme.txt \
+		$(DOCDIR)/freeverb-readme.txt
+
+# Skip test as it is not automatic (requires human hearing)
+override_dh_auto_test:

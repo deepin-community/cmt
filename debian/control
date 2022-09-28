@@ -1,0 +1,29 @@
+Source: cmt
+Section: sound
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               ladspa-sdk,
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/multimedia-team/cmt
+Vcs-Git: https://salsa.debian.org/multimedia-team/cmt.git
+Homepage: http://www.ladspa.org/cmt/
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Rules-Requires-Root: no
+
+Package: cmt
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Provides: ladspa-plugin
+Description: LADSPA plugin collection
+ Computer Music Toolkit is a collection of LADSPA compatible
+ plugins that any conforming program may take advantage of.
+ .
+ Plugins available are: low/high pass filters, echo/feedback delay filters
+ with configurable delays from 0.01 to 60 seconds, amplifies, white and
+ pink noise generators, compressors, expanders, limiters, b/fmh encoders,
+ drum synthesizers, lofi (low fidelity), phase modulator (phasemod) and
+ many more.
+ .
+ These plugins are only usable in host applications, of which sweep and others
+ can be found in Debian.

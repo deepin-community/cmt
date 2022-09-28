@@ -1,0 +1,22 @@
+From: Felipe Sateler <fsateler@debian.org>
+Date: Sat, 13 Apr 2019 12:25:32 -0400
+Subject: Don't fail if the plugin subdir doesn't exist.
+
+It might not exist on fresh git checkouts as git does not track
+directories, only files.
+---
+ src/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 159dd46..c9c2afe 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -66,6 +66,7 @@ plugin:	$(PLUGIN_LIB)
+ targets:	$(PLUGIN_LIB)
+ 
+ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS) gcc_exports.map
++	mkdir -p $(shell dirname $(PLUGIN_LIB))
+ 	$(CXX)	-shared							\
+ 		$(CFLAGS)						\
+ 		-fvisibility=hidden					\
